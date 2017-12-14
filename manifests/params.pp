@@ -81,9 +81,9 @@ class duplicity::params {
       }
     }
     'CentOS': {
-      $duply_version = $::operatingsystemmajrelease ? {
+      $duply_version = $::lsbmajdistrelease ? {
         '6' => '1.6.0',
-        '7' => '1.11',
+        '7' => '1.11.3',
       }
     }
     default: {
