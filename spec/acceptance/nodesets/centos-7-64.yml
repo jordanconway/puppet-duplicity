@@ -1,11 +1,15 @@
 HOSTS:
-  centos-7-x64:
-    platform: el-7-x86_64
-    hypervisor: vagrant
-    box: puppetlabs/centos-7.2-64-nocm
-    box_url: https://app.vagrantup.com/puppetlabs/boxes/centos-7.2-64-nocm
-
+    centos-7-x64:
+        roles: [agent, database, dashboard, master]
+        platform: el-7-x86_64
+        image: centos/centos7
+        hypervisor: docker
+        docker_cmd: '["/usr/sbin/init"]'
+        docker_image_commands:
+            - rm /lib/systemd/system/systemd*udev*
+            - rm /lib/systemd/system/getty.target
+            - yum install -y wget
+      docker_preserve_image: true
 CONFIG:
-  log_level: info
-  trace_limit: 100
-  type: git
+    type: foss
+    :trace_limit: 100  # Get more than 10 lines of trace when something fails.
