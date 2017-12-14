@@ -6,7 +6,7 @@ HOSTS:
     hypervisor: docker
     docker_cmd: '["/usr/sbin/init"]'
     docker_image_commands:
-      - 'yum install -y wget redhat-lsb'
+      - 'yum install -y wget redhat-lsb epel-release'
     docker_preserve_image: true
 CONFIG:
   type: foss
