@@ -23,7 +23,7 @@ describe 'duplicity::file can restore from backup' do
               ensure => backup,
             }
       ", :catch_failures => true)
-      shell('duply system backup')
+      shell('PATH=/bin:$PATH;duply system backup')
       shell('rm -rf /tmp/restore-me')
     }
 
@@ -63,7 +63,7 @@ describe 'duplicity::file can restore from backup' do
               ensure => backup,
             }
       ", :catch_failures => true)
-      shell('/usr/local/sbin/duply system backup')
+      shell('PATH=/bin:$PATH;/usr/local/sbin/duply system backup')
       shell('rm -rf /tmp/restore-me')
     }
 
